@@ -65,31 +65,7 @@ function parseRequest(queryParameters, response) {
 
 function sendHttpsRequest(response) {
     
-    const postData = JSON.stringify({
-        works: true
-    });
-    const postOpts = {
-        host: "httpbin.org",
-        path: "/post",
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "Content-Length": Buffer.byteLength(postData)
-        }
-    };
-    const newReq = https.request(postOpts, result => {
-        result.setEncoding("utf8");
-        res.on("data", chunk => {
-            console.log("Response" + chunk);
-            //response.status(200).send("proba5" + chunk);
-        });
-        res.on("end", () => {
-            //response.status(200).send("proba5");
-        })
-    });
-
-    newReq.write(postData);
-    newReq.end();
+    
 
     setTimeout(() => {
         response.status(200).send("proba6");

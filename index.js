@@ -81,15 +81,19 @@ function sendHttpsRequest(response) {
         result.setEncoding("utf8");
         res.on("data", chunk => {
             console.log("Response" + chunk);
-            response.status(200).send("proba5" + chunk);
+            //response.status(200).send("proba5" + chunk);
         });
         res.on("end", () => {
-            response.status(200).send("proba5");
+            //response.status(200).send("proba5");
         })
     });
 
     newReq.write(postData);
     newReq.end();
+
+    setTimeout(() => {
+        response.status(200).send("proba6");
+    }, 1500);
 
 }
 

@@ -65,7 +65,8 @@ function parseRequest(queryParameters, response) {
 
 function sendHttpsRequest(response) {
     
-    response.status(200).send("proba");
+    console.log(https);
+    response.status(200).send("proba2");
 
 }
 

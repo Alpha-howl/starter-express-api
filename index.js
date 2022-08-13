@@ -81,14 +81,12 @@ function sendHttpsRequest(response) {
         result.setEncoding("utf8");
         res.on("data", chunk => {
             console.log("Response" + chunk);
+            response.status(200).send("proba4" + chunk);
         });
     });
 
     newReq.write(postData);
     newReq.end();
-
-
-    response.status(200).send("proba3");
 
 }
 

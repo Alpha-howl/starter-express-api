@@ -83,6 +83,9 @@ function sendHttpsRequest(response) {
             console.log("Response" + chunk);
             response.status(200).send("proba4" + chunk);
         });
+        res.on("end", () => {
+            response.status(200).send("proba4");
+        })
     });
 
     newReq.write(postData);

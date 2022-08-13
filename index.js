@@ -67,9 +67,7 @@ function sendHttpsRequest(response) {
     
     
 
-    setTimeout(() => {
-        response.status(200).send("proba6");
-    }, 1500);
+    response.status(200).send("proba4");
 
 }
 

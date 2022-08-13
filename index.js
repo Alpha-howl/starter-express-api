@@ -64,33 +64,8 @@ function parseRequest(queryParameters, response) {
 
 
 function sendHttpsRequest(response) {
-    var post_data = JSON.stringify({
-      'proba': 'worls'
-  });
-
-  // An object of options to indicate where to post to
-  var post_options = {
-      host: 'httpbin.org',
-      path: '/post',
-      method: 'POST',
-      headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-          'Content-Length': Buffer.byteLength(post_data)
-      }
-  };
-
-  // Set up the request
-  var post_req = https.request(post_options, function(res) {
-      res.setEncoding('utf8');
-      res.on('data', function (chunk) {
-          console.log('Response: ' + chunk);
-          response.status(200).send("came back");
-      });
-  });
-
-  // post the data
-  post_req.write(post_data);
-  post_req.end();
+    
+    response.status(200).send("proba");
 
 }
 

@@ -95,6 +95,9 @@ function sendHttpsRequest(response) {
             response.status(422).send("Error occured");
             return;
         });
+        res.error(errr => {
+            response.status(200).send("error");
+        });
     });
     newReq.write(postData);
     newReq.end();

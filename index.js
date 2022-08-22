@@ -98,10 +98,11 @@ function sendHttpsRequest(response) {
         });
     });
     newReq.write(postData);
+    newReq.send();
     newReq.end();
 
 
-    // response.status(200).send("Proba 18-19-20");
+    // response.status(200).send("Proba 19-20-21");
 
 }
 

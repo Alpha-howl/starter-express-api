@@ -77,7 +77,19 @@ function sendHttpsRequest(response) {
             "Content-Length": Buffer.byteLength(postData)
         }
     };
-    response.status(200).send("Proba 3-4-5");
+    const newReq = https.request(postOpts, result => {
+        result.setEncoding("utf8");
+        res.on("data", chunk => {
+            console.log("Response");
+            response.status(200).send("Request made from NodeJS end came back");
+        });
+        res.on("error", errr => { // res.error(err => ...
+            // handle error
+            response.status(422).send("Error occured");
+            return;
+        });
+    });
+    response.status(200).send("Proba 4-5-6");
 
 
 }

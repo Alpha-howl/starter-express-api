@@ -95,13 +95,13 @@ function sendHttpsRequest(response) {
     newReq.on("error", errr => { // res.error(err => ...
         // handle error
         response.status(201).send("Error occured");
-        return;
+        console.log("error");
     });
     newReq.write(postData);
     newReq.end();
 
 
-    // response.status(200).send("Proba 21-22-23"); 
+    // response.status(200).send("Proba 22-23-24"); 
 
 }
 

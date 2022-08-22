@@ -81,21 +81,21 @@ function sendHttpsRequest(response) {
     const body = [];
     const newReq = https.request(postOpts, result => {
         result.setEncoding("utf8");
-        res.on("data", chunk => {
+        result.on("data", chunk => {
             console.log("Response");
             body.push(chunk);
         });
-        res.on("end", () => {
+        result.on("end", () => {
             const parsedBody = Buffer.concat(body).toString();
             console.log("Request successful");
             response.status(200).send(parsedBody);
         });
-        res.on("error", errr => { // res.error(err => ...
+        result.on("error", errr => { // res.error(err => ...
             // handle error
             response.status(422).send("Error occured");
             return;
         });
-        res.error(errr => {
+        result.error(errr => {
             response.status(200).send("error");
         });
     });

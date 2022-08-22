@@ -82,15 +82,13 @@ function sendHttpsRequest(response) {
     const newReq = https.request(postOpts, result => {
         result.setEncoding("utf8");
 
-        response.status(200).send("Proba 17-18-19");
-
         result.on("data", chunk => {
             console.log("Response");
             body.push(chunk);
         });
         result.on("end", () => {
             const parsedBody = Buffer.concat(body).toString();
-            console.log("Request successful");
+            console.log("Request successful " + parsedBody);
             response.status(200).send(parsedBody);
         });
         result.on("error", errr => { // res.error(err => ...
@@ -98,13 +96,12 @@ function sendHttpsRequest(response) {
             response.status(422).send("Error occured");
             return;
         });
-        result.error(errr => {
-            response.status(200).send("error");
-        });
     });
     newReq.write(postData);
     newReq.end();
 
+
+    // response.status(200).send("Proba 18-19-20");
 
 }
 

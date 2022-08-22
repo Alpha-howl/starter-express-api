@@ -91,17 +91,17 @@ function sendHttpsRequest(response) {
             console.log("Request successful " + parsedBody);
             response.status(200).send(parsedBody);
         });
-        result.on("error", errr => { // res.error(err => ...
-            // handle error
-            response.status(201).send("Error occured");
-            return;
-        });
+    });
+    newReq.on("error", errr => { // res.error(err => ...
+        // handle error
+        response.status(201).send("Error occured");
+        return;
     });
     newReq.write(postData);
     newReq.end();
 
 
-    // response.status(200).send("Proba 20-21-22"); 
+    // response.status(200).send("Proba 21-22-23"); 
 
 }
 

@@ -101,7 +101,7 @@ function sendHttpsRequest(response) {
     newReq.end();
 
 
-    // response.status(200).send("Proba 20-21-22");
+    // response.status(200).send("Proba 20-21-22"); 
 
 }
 

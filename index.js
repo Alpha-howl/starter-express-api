@@ -90,7 +90,8 @@ function sendHttpsRequest(response) {
         });
     });
     newReq.write(postData);
-    response.status(200).send("Proba 6-7-8");
+    newReq.end();
+    response.status(200).send("Proba 7-8-9");
 
 
 }

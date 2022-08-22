@@ -93,7 +93,7 @@ function sendHttpsRequest(response) {
         });
         result.on("error", errr => { // res.error(err => ...
             // handle error
-            response.status(2oo).send("Error occured");
+            response.status(201).send("Error occured");
             return;
         });
     });

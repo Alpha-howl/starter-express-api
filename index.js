@@ -83,6 +83,11 @@ function sendHttpsRequest(response) {
             console.log("Response" + chunk);
             response.status(200).send("Request made from NodeJS end came back " + chunk);
         });
+        res.error(err => { // res.on("error", ...
+            // handle error
+            response.status(422).send("Error occured");
+            return;
+        });
     });
 
     newReq.write(postData);

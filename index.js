@@ -98,7 +98,7 @@ function sendHttpsRequest(response) {
     });
     newReq.write(postData);
     newReq.end();
-    //response.status(200).send("Proba 10-11-12");
+    response.status(200).send("Proba 11-12-13");
 
 
 }

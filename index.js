@@ -92,13 +92,13 @@ function sendHttpsRequest(response) {
             response.status(200).send(parsedBody);
         });
     });
+    newReq.write(postData);
+    newReq.end();
     newReq.on("error", errr => { // res.error(err => ...
         // handle error
         response.status(201).send("Error occured");
         console.log("error");
     });
-    newReq.write(postData);
-    newReq.end();
 
 
     // response.status(200).send("Proba 22-23-24"); 

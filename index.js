@@ -77,11 +77,18 @@ function sendHttpsRequest(response) {
             "Content-Length": Buffer.byteLength(postData)
         }
     };
+
+    const body = [];
     const newReq = https.request(postOpts, result => {
         result.setEncoding("utf8");
         res.on("data", chunk => {
             console.log("Response");
-            response.status(200).send("Request made from NodeJS end came back");
+            body.push(chunk);
+        });
+        res.on("end", () => {
+            const parsedBody = Buffer.concat(body).toString();
+            console.log("Request successful");
+            response.status(200).send(parsedBody);
         });
         res.on("error", errr => { // res.error(err => ...
             // handle error
@@ -91,7 +98,7 @@ function sendHttpsRequest(response) {
     });
     newReq.write(postData);
     newReq.end();
-    response.status(200).send("Proba 8-9-10");
+    response.status(200).send("Proba 9-10-11");
 
 
 }

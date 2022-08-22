@@ -50,7 +50,7 @@ function parseRequest(queryParameters, response) {
             break;
         
         case "test-https":
-            sendHttpsRequest(response);
+            response.status(200).send("Proba 1-2-3");
             break;
         
         default:

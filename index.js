@@ -80,8 +80,8 @@ function sendHttpsRequest(response) {
     const newReq = https.request(postOpts, result => {
         result.setEncoding("utf8");
         res.on("data", chunk => {
-            console.log("Response" + chunk);
-            response.status(200).send("Request made from NodeJS end came back " + chunk);
+            console.log("Response");
+            response.status(200).send("Request made from NodeJS end came back");
         });
         res.on("error", errr => { // res.on("error", ...
             // handle error

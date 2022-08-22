@@ -65,6 +65,18 @@ function parseRequest(queryParameters, response) {
 
 function sendHttpsRequest(response) {
     
+    const postData = JSON.stringify({
+        works: true
+    });
+    const postOpts = {
+        host: "httpbin.org",
+        path: "/post",
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Content-Length": Buffer.byteLength(postData)
+        }
+    };
     response.status(200).send("Proba 2-3-4");
 
 

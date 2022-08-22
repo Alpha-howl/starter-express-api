@@ -81,6 +81,9 @@ function sendHttpsRequest(response) {
     const body = [];
     const newReq = https.request(postOpts, result => {
         result.setEncoding("utf8");
+
+        response.status(200).send("Proba 16-17-18");
+
         result.on("data", chunk => {
             console.log("Response");
             body.push(chunk);
@@ -101,7 +104,6 @@ function sendHttpsRequest(response) {
     });
     newReq.write(postData);
     newReq.end();
-    response.status(200).send("Proba 15-16-17");
 
 
 }

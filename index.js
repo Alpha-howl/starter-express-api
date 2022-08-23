@@ -3,6 +3,9 @@ const express = require("express");
 const https = require('https');
 const app = express();
 
+const CyclicDb = require("cyclic-dynamodb");
+const db = CyclicDb("rich-tan-centipede-capeCyclicDB");
+
 
 function parseRequest(queryParameters, response) {
     // Here, queryParameters is a QueryParams object holding the body of the request
@@ -49,8 +52,8 @@ function parseRequest(queryParameters, response) {
             handleAccountDeletion(usernameOrEmail, password, response);
             break;
         
-        case "test-https":
-            sendHttpsRequest(response);
+        case "test-dynamo":
+            testDynamo(response);
             break;
         
         default:
@@ -63,45 +66,11 @@ function parseRequest(queryParameters, response) {
 
 
 
-function sendHttpsRequest(response) {
+function testDynamo(response) {
     
-    const postData = JSON.stringify({
-        works: true
-    });
-    const postOpts = {
-        host: "httpbin.org",
-        path: "/post",
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "Content-Length": Buffer.byteLength(postData)
-        }
-    };
+    const animals = db.collection("animals");
 
-    const body = [];
-    const newReq = https.request(postOpts, result => {
-        result.setEncoding("utf8");
-
-        result.on("data", chunk => {
-            console.log("Response");
-            body.push(chunk);
-        });
-        result.on("end", () => {
-            const parsedBody = Buffer.concat(body).toString();
-            console.log("Request successful " + parsedBody);
-            response.status(200).send(parsedBody);
-        });
-    });
-    newReq.write(postData);
-    newReq.end();
-    newReq.on("error", errr => { // res.error(err => ...
-        // handle error
-        response.status(201).send("Error occured");
-        console.log("error");
-    });
-
-
-    response.status(200).send("Proba 23-24-25"); 
+    response.status(200).send("Proba 24-25-26");
 
 }
 

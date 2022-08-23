@@ -68,7 +68,7 @@ function parseRequest(queryParameters, response) {
 
 function testDynamo(response) {
     
-    const animals = db.collection("animals");
+    //const animals = db.collection("animals");
 
     response.status(200).send("Proba 24-25-26");
 

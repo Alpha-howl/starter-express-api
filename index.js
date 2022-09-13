@@ -1,5 +1,8 @@
-const io = require("socket.io")(3000);
-
-io.on("connection", socket => {
-    socket.emit("proba", "Proba 1-2-3");
+const server = require("http").createServer();
+const io = require("socket.io")(server);
+io.on("connection", client => {
+  client.on("event", data => { /* … */ });
+  client.on("disconnect", () => { /* … */ });
+  client.emit("proba", "Proba 1-2-3");
 });
+server.listen(3000);

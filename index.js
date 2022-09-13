@@ -1,18 +1,5 @@
-const express = require("express");
-const app = express();
-const server = require("http").createServer(app);
+const io = require("socket.io")(3000);
 
-const WebSocket = require("ws"); 
-
-
-const wss = new WebSocket.Server({ server });
-
-wss.on("connection", ws => {
-    ws.send("You connected");
-    ws.on("message", msg => {
-        ws.send("You wrote: " + msg);
-    });
+io.on("connection", socket => {
+    socket.emit("proba", "Proba 1-2-3");
 });
-
-
-server.listen(3000);
